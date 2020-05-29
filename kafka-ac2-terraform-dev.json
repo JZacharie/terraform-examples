@@ -1,0 +1,223 @@
+{
+  "version": 4,
+  "terraform_version": "0.12.18",
+  "serial": 1,
+  "lineage": "28b20617-4781-b4a1-fcae-2db4fee0e87a",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_ebs_volume",
+      "name": "ebs_kafka_node1",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:eu-west-1:366347971103:volume/vol-0157e0afd10ec94d2",
+            "availability_zone": "eu-west-1b",
+            "encrypted": false,
+            "id": "vol-0157e0afd10ec94d2",
+            "iops": 120,
+            "kms_key_id": "",
+            "outpost_arn": "",
+            "size": 40,
+            "snapshot_id": "",
+            "tags": {
+              "Name": "xsnl60t108z",
+              "Owner": "Joseph ZACHARIE"
+            },
+            "type": "gp2"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "ec2_kafka_node1",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "ami": "ami-0b51862c8f560d7e2",
+            "arn": "arn:aws:ec2:eu-west-1:366347971103:instance/i-0acfd31552765ee40",
+            "associate_public_ip_address": false,
+            "availability_zone": "eu-west-1b",
+            "cpu_core_count": 1,
+            "cpu_threads_per_core": 2,
+            "credit_specification": [
+              {
+                "cpu_credits": "unlimited"
+              }
+            ],
+            "disable_api_termination": false,
+            "ebs_block_device": [
+              {
+                "delete_on_termination": false,
+                "device_name": "/dev/sdf",
+                "encrypted": false,
+                "iops": 120,
+                "kms_key_id": "",
+                "snapshot_id": "",
+                "volume_id": "vol-0157e0afd10ec94d2",
+                "volume_size": 40,
+                "volume_type": "gp2"
+              }
+            ],
+            "ebs_optimized": false,
+            "ephemeral_block_device": [],
+            "get_password_data": false,
+            "hibernation": false,
+            "host_id": null,
+            "iam_instance_profile": "App_Integration_Platform_Services_GitLabRunner",
+            "id": "i-0acfd31552765ee40",
+            "instance_initiated_shutdown_behavior": null,
+            "instance_state": "running",
+            "instance_type": "t3a.large",
+            "ipv6_address_count": 0,
+            "ipv6_addresses": [],
+            "key_name": "integration-services-account",
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_put_response_hop_limit": 1,
+                "http_tokens": "optional"
+              }
+            ],
+            "monitoring": false,
+            "network_interface": [],
+            "network_interface_id": null,
+            "outpost_arn": "",
+            "password_data": "",
+            "placement_group": "",
+            "primary_network_interface_id": "eni-0fccd98cd53acd47c",
+            "private_dns": "ip-10-24-68-227.eu-west-1.compute.internal",
+            "private_ip": "10.24.68.227",
+            "public_dns": "",
+            "public_ip": "",
+            "root_block_device": [
+              {
+                "delete_on_termination": false,
+                "device_name": "/dev/sda1",
+                "encrypted": true,
+                "iops": 126,
+                "kms_key_id": "arn:aws:kms:eu-west-1:366347971103:key/b887751e-be90-4323-b0aa-b6ae9abd31d5",
+                "volume_id": "vol-05a03b72623d18492",
+                "volume_size": 42,
+                "volume_type": "gp2"
+              }
+            ],
+            "security_groups": [],
+            "source_dest_check": true,
+            "subnet_id": "subnet-016018521e25a17b8",
+            "tags": {
+              "CE_Environment": "Development",
+              "ENV": "DEV",
+              "Name": "xsnl60t108z",
+              "Owner": "Joseph ZACHARIE",
+              "dns-name": "xsnl60t108z.pharma.aventis.com"
+            },
+            "tenancy": "default",
+            "timeouts": null,
+            "user_data": null,
+            "user_data_base64": null,
+            "volume_tags": {
+              "ENV": "DEV"
+            },
+            "vpc_security_group_ids": [
+              "sg-0189168060a4cdd13",
+              "sg-05957b9d728e045f0",
+              "sg-06038e6029bbb66c8",
+              "sg-0934cd343020dd1d0"
+            ]
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "aws_security_group.sg_kafka"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "sg_kafka",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:eu-west-1:366347971103:security-group/sg-0934cd343020dd1d0",
+            "description": "Created by terraform",
+            "egress": [],
+            "id": "sg-0934cd343020dd1d0",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 9093,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 9093
+              },
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": null,
+                "from_port": 9092,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 9092
+              }
+            ],
+            "name": "sg_kafka",
+            "name_prefix": null,
+            "owner_id": "366347971103",
+            "revoke_rules_on_delete": false,
+            "tags": {},
+            "timeouts": null,
+            "vpc_id": "vpc-000a10a58a6bc4b3a"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_volume_attachment",
+      "name": "node1_apps",
+      "provider": "provider.aws",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "device_name": "/dev/sdf",
+            "force_detach": null,
+            "id": "vai-1498841901",
+            "instance_id": "i-0acfd31552765ee40",
+            "skip_destroy": null,
+            "volume_id": "vol-0157e0afd10ec94d2"
+          },
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_ebs_volume.ebs_kafka_node1",
+            "aws_instance.ec2_kafka_node1",
+            "aws_security_group.sg_kafka"
+          ]
+        }
+      ]
+    }
+  ]
+}
